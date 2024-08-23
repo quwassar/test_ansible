@@ -1,0 +1,16 @@
+- name: Docker run container nginx
+  community.docker.docker_container:
+    name: nginx
+    image: nginx:stable-perl
+    memory_swappiness: 0
+    restart_policy: always
+    recreate: false
+    restart: false
+    state: started
+    network_mode: host
+    ipc_mode: host
+    ports:
+      - "80:80"
+  notify: Check nginx
+  tags:
+    - nginx

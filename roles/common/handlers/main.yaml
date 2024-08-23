@@ -1,0 +1,7 @@
+- name: Check nginx
+  ansible.builtin.uri:
+    url: http://localhost/
+  register: result
+  until: result.status == 200
+  retries: 4
+  delay: 5
